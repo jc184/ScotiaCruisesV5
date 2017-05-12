@@ -32,7 +32,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Update Booking Page</title>
-        <!-- JAVASCRIPT STOPPED WORKING -->
+        <!--  -->
         <script type="text/javascript" src="scripts/datepickercontrol.js"></script>
         <script type="text/javascript" src="scripts/bookingvalidation.js"></script>
         <link type="text/css" rel="stylesheet" href="styles/datepickercontrol.css">
@@ -89,7 +89,7 @@
                         </tr>
                         <tr>
                             <td align="left"><p><label for="totalCost">Total Cost:<br /></label></p></td>
-                            <td><input type="text" name="totalCost" id="totalCost" value="<%= booking.getTotalCost()%>" /></td>
+                            <td><input type="text" name="totalCost" id="totalCost" value="<%= booking.getTotalCost()%>" /></td><!-- MAKE READ ONLY -->
                         </tr>
                         <tr>
                             <td align="left"><p>Note:</p></td>
