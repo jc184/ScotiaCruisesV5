@@ -14,4 +14,6 @@ As its a MySQL database be sure to connect to localhost port 3306, with the user
 Alternatively you can edit the source code.
 
 To login as an admin user use 'admin' as the login username, and 'admin' as the login password. You can then 
-browse the application. To use the application as a customer, first register / login with your username and password
+browse the application. To use the application as a customer, first register / login with your username and password.
+
+I welcome constructive feedback regarding this application. Feel free to use 'issues', or e-mail me, jc184, with feedback 
