@@ -39,7 +39,7 @@
                 <table cellpadding="0" cellspacing="0" border="0" id="table" class="sortable">
 
                     <h3>Daily Sailing for Route <%= request.getAttribute("routeID")%> on  <%= request.getAttribute("cal")%>:</h3><!--  --> 
-                    <h3>Departure: <%= request.getAttribute("departure")%>am, Arrival: <%= request.getAttribute("arrival")%>pm</h3>
+                    <h3>Departure: <%= request.getAttribute("departure")%>am, Return: <%= request.getAttribute("arrival")%>pm</h3>
                     <form name="goto" action="CustomerServlet">
                         <input type="hidden" name="loginName" value="<%=session.getAttribute("loginName")%>" />
                         <input type="hidden" name="loginPasswd" value="<%=session.getAttribute("loginPasswd")%>" />

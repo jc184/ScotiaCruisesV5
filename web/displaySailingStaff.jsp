@@ -76,7 +76,7 @@
                         
                         <%}%>
                         <h3>Daily Sailing for Route <%= request.getAttribute("routeID") %> on  <%= request.getAttribute("cal") %>:</h3><!-- ADD ENTRY FOR DATE HERE --> 
-                        <h3>Departure: <%= request.getAttribute("departure")%>am, Arrival: <%= request.getAttribute("arrival")%>pm</h3>
+                        <h3>Departure: <%= request.getAttribute("departure")%>am, Return: <%= request.getAttribute("arrival")%>pm</h3>
                     </tbody>
                     <form name="goto" action="CustomerServlet">
                         <input type="hidden" name="loginName" value="<%=session.getAttribute("loginName")%>" />
