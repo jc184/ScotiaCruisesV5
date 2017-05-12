@@ -1,0 +1,184 @@
+/* 
+    Document   : tinytablesorter
+    Created on : 23-May-2009, 11:22:18
+    Author     : Michael Leigeber
+    Credits    : Michael Leigeber, http://www.leigeber.com/2009/03/table-sorter/
+    Info       : "This script has been tested in all major browsers and is
+                  available free of charge for both personal or commercial
+                  projects under the creative commons license. Community support
+                  is available here. Paid support is also available, contact me for details."
+    Description:
+    Purpose of the stylesheet follows.
+*/
+
+* {margin:0; padding:0; outline:none}
+ body {font:11px Verdana,Arial; margin:20px; background:#ADD8E6; color:#091f30; padding:1px}/*  */
+
+.sortable {width:auto; border-left:1px solid #c6d5e1; border-top:1px solid #c6d5e1; margin-left:25px; margin-bottom:10px;}
+.sortable th {background-image:url(images/header-bg.gif); text-align:center; color:#6495ED; background-color: #4682B4;  border:1px solid #c6d5e1}
+.sortable th h3 {font-size:10px; color:#00008B; padding:5px 0px 0px}
+.sortable td {padding:4px 6px 6px; border-bottom:1px solid #c6d5e1; border-right:1px solid #c6d5e1}
+.sortable .desc, .sortable .asc {background-image:url(images/header-selected-bg.gif)}
+/*  
+.sortable .head h3 {background:url(images/sort.gif) 7px center no-repeat; cursor:pointer; padding-left:18px}
+.sortable .desc, .sortable .asc {background:url(images/header-selected-bg.gif)}
+.sortable .desc h3 {background:url(images/desc.gif) 7px center no-repeat; cursor:pointer; padding-left:18px}
+.sortable .asc h3 {background:url(images/asc.gif) 7px  center no-repeat; cursor:pointer; padding-left:18px}
+*/
+.sortable .head:hover, .sortable .desc:hover, .sortable .asc:hover {color:#fff}
+.sortable .evenrow td {background:#fff}
+.sortable .oddrow td {background:#ecf2f6}
+.sortable td.evenselected {background:#ecf2f6}
+.sortable td.oddselected {background:#dce6ee}
+
+.sortable tr:hover {background-color: #99F; color:black;}
+.sortable tr:hover td {background-color: #99F; color:black;}
+
+#controls {width:auto; margin:0 auto; height:20px}
+#perpage {float:left; width:220px}
+#perpage select {float:left; font-size:11px}
+#perpage span {float:left; margin:2px 0 0 5px}
+#navigation {float:left; width:400px; text-align:center;}
+#navigation img {cursor:pointer}
+#text {float:left; width:160px;  margin-top:2px; margin-right:20px}
+
+body{
+    background-color:#333;
+}
+
+p {
+    font:12px/20px verdana, arial, helvetica, sans-serif;/*  */
+    font-weight:bold;
+    margin:0px 0px 0px 0px;
+    padding:5px;
+    color:#696969;
+}
+
+h1 {
+    font-family: "Helvetica Neue", arial, helvetica, sans-serif;/*  */
+    font-size:36px;
+    margin:0px 0px 0px 0px;
+    padding:5px;
+   /* color:#6495ED;  */
+    color:#8B0000;/*  */
+}
+
+h2 {
+    font-family: "Helvetica Neue", arial, helvetica, sans-serif;/*  */
+    font-size:32px;
+    margin:0px 0px 15px 0px;
+    padding:5px;
+    /* color:#6495ED; */
+    color:#8B0000;/*  */
+}
+h3 {
+    font-family: "Helvetica Neue", arial, helvetica, sans-serif;/*  */
+    font-size:16px;
+    margin:0px 0px 15px 0px;
+    padding:5px;
+    /* color:#6495ED; */
+    color:#8B0000;/*  */
+}
+label { cursor: pointer }
+
+input:focus
+{
+    background-color:#FFFF33;
+}
+
+select:focus
+{
+    background-color:#FFFF33;
+}
+
+textarea:focus
+{
+    background-color:#FFFF33;
+}
+
+/* # REFERS TO HORIZ AND VERT NAV BAR COMPONENTS */
+ul
+{
+    font:12px/20px verdana, arial, helvetica, sans-serif;/*  */
+    font-size:12px;
+    list-style-type:none;
+    margin:0;
+    padding:0;
+    overflow:hidden;
+}
+li
+{
+    float:left;
+}
+a:link,a:visited
+{
+    display:block;
+    width:120px;
+    font-weight:bold;
+    color:#FFFFFF;
+    background-color:#707070;
+    text-align:center;
+    padding:4px;
+    text-decoration:none;
+}
+a:hover,a:active
+{
+    background-color:#A8A8A8;
+}
+
+/* # REFERS BOX MODEL DIV BOXES */
+div.outer
+{
+    width:1070px; /* TRY 100% HERE (ORIGINALLY 970px*/
+    padding:10px;
+    border:2px;
+    border-style:solid;
+    border-color:#5F9EA0;
+    margin-top:20px;
+    margin-bottom:20px;
+    margin-right:auto;
+    margin-left:auto;
+    background-color:#ADD8E6;
+}
+
+div.header
+{
+    width:1000px;/* TRY 100% HERE (ORIGINALLY 900px*/
+    padding:10px;
+    border:2px;
+    border-style:solid;
+    border-color:#5F9EA0;
+    margin-top:20px;
+    margin-bottom:20px;
+    margin-right:20px;
+    margin-left:20px;
+    background-color:#eee;
+}
+
+div.box
+{
+    width:1000px;/* TRY 100% HERE (ORIGINALLY 900px*/
+    padding:10px;
+    border:2px;
+    border-style:solid;
+    border-color:#5F9EA0;
+    margin-top:20px;
+    margin-bottom:20px;
+    margin-right:20px;
+    margin-left:20px;/* CHANGE THIS VALUE TO MAKE SPACE FOR NAVIGATION BAR */
+    background-color:#eee;
+}
+
+div.footer
+{
+    width:1000px;/* TRY 100% HERE (ORIGINALLY 900px*/
+    padding:10px;
+    border:2px;
+    border-style:solid;
+    border-color:#5F9EA0;
+    margin-top:20px;
+    margin-bottom:0px;
+    margin-right:20px;
+    margin-left:20px;
+    background-color:#eee;
+}
