@@ -32,10 +32,10 @@
         <!-- UNCOMMENT HTML WITH THIS -->
     </head>
     <body>
-        <!-- UNCOMMENT HTML WITH THIS -->
+        
         <div class="outer">
             <div class="header"><h1>Scotia Island & Wildlife Cruises</h1></div>
-            <%@include file="/includes/leftmenu.jsp" %>
+            <!-- UNCOMMENT HTML WITH THIS --><%@include file="/includes/leftmenu.jsp" %>
 
             <div class="box">
                 <h2>Customer Page</h2>

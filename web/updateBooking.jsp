@@ -51,7 +51,7 @@
                         You can enabled it in Tools / Options in most browsers</p></noscript><br />
                 <h3>Welcome <%= session.getAttribute("loginName")%></h3>
                 <p>Enter your details in the form below and click 'update' to update your booking.</p>
-                <form name="updateBookingForm" action="BookingServlet">
+                <form name="updateBookingForm" action="BookingServlet" method="POST">
                     <% BookingBean booking = (BookingBean) request.getAttribute("booking");%>
                     <table cellspacing="8" border="0">
                         <tr>
@@ -88,8 +88,8 @@
                             <td><input type="text" name="otherinfo" id="otherinfo" value="<%= booking.getOtherinfo()%>" /></td>
                         </tr>
                         <tr>
-                            <td align="left"><p><label for="totalCost">Total Cost:<br /></label></p></td>
-                            <td><input type="text" name="totalCost" id="totalCost" value="<%= booking.getTotalCost()%>" /></td><!-- MAKE READ ONLY -->
+                            <td align="left"><p>Total Cost:</p></td>
+                            <td><p name="totalCost" id="totalCost"><%= booking.getTotalCost()%></p></td><!-- MAKE READ ONLY. SHOULD WORK -->
                         </tr>
                         <tr>
                             <td align="left"><p>Note:</p></td>
