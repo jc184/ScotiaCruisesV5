@@ -87,10 +87,12 @@
                             <td align="left"><p><label for="otherinfo">Other Information:<br />eg. disabilities</label></p></td>
                             <td><input type="text" name="otherinfo" id="otherinfo" value="<%= booking.getOtherinfo()%>" /></td>
                         </tr>
+                        
                         <tr>
-                            <td align="left"><p>Total Cost:</p></td>
-                            <td><p name="totalCost" id="totalCost"><%= booking.getTotalCost()%></p></td><!-- MAKE READ ONLY. SHOULD WORK -->
+                            <td align="left"><p><label for="totalCost">Total Cost:</label></p></td>
+                            <td><input type="text" name="totalCost" id="totalCost" value="<%= booking.getTotalCost()%>" readonly  /></td>
                         </tr>
+                        
                         <tr>
                             <td align="left"><p>Note:</p></td>
                             <td><p>The maximum number of Adults and Children is 30</p></td>
