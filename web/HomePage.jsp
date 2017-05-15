@@ -14,26 +14,20 @@
     <h2>Home Page</h2>
     <noscript><p>This page is best viewed with JavaScript enabled.<br />
             You can enabled it in Tools / Options in most browsers</p></noscript><br />
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna
-        aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-        ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa
-        qui officia deserunt mollit anim id est laborum.<br/><br/>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna
-        aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-        ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa
-        qui officia deserunt mollit anim id est laborum.<br/><br/>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna
-        aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-        ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa
-        qui officia deserunt mollit anim id est laborum. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum.</p>
+    <p>Welcome to Scotia Wildlife & Island Cruises.<br/><br/>
+        We offer daily cruises to the Small Isles of Rum, Eigg and Muck from Morar, 
+        just 10 minutes from Mallaig train station, on our three vessels: 'Puffin', 
+        'Guillemot' and 'Cormorant'. Three Routes are available: Morar to Rum return, 
+        Morar to Muck return, and Morar to Eigg return. The vessels circumnavigate 
+        the islands in question and make stops to enable passengers to explore each 
+        of the enticing Small Isles at their leisure.<br/><br/>
+        Enjoy on board facilities and dine in unforgettable surroundings in our 
+        dining saloons, or weather permitting, on deck or on our viewing platforms.
+        Here you can experience Scottish Wildlife at first hand, including elusive dolphins.
+        Take shelter down below when it is raining and enjoy much needed refreshments 
+        from our cosy bars.
+        Each vessel has a crew of four: Skipper, Bosun, Wildlife Guide and Chef, and
+        has room for 12 passengers each.</p>
 </div>
 
 <!-- UNCOMMENT HTML WITH THIS -->

@@ -93,7 +93,7 @@
                         </tr>
                         <tr>
                             <td align="left"><p>Note:</p></td>
-                            <td><p>The maximum number of Adults and Children is 30</p></td>
+                            <td><p>The maximum number of Adults and Children is 12</p></td>
                         </tr>
                         <tr>
                             <td><br /><p>Add a booking</p><input type="submit" value="add booking" name="submit" style="width:100px" onclick="validate(this.form);return false;" /></td>

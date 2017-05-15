@@ -96,7 +96,7 @@
                         </tr>
                         <tr>
                             <td align="left"><p><label for="totalCost">Total Cost:<br /></label></p></td>
-                            <td><input type="text" name="totalCost" id="totalCost" value="<%= booking.getTotalCost()%>" /></td>
+                            <td><input type="text" name="totalCost" id="totalCost" value="<%= booking.getTotalCost()%>" readonly /></td>
                         </tr>
                         <tr>
                             <td align="left"><p><label for="paymentReceived">Payment Received:<br /></label></p></td>
@@ -104,7 +104,7 @@
                         </tr>
                         <tr>
                             <td align="left"><p>Note:</p></td>
-                            <td><p>The maximum number of Adults and Children is 30</p></td>
+                            <td><p>The maximum number of Adults and Children is 12</p></td>
                         </tr>
                         <tr>
                             <td><br /><input type="hidden" name="bookingID" value="<%= booking.getBookingID()%>" /></td>

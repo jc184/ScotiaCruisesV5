@@ -6,10 +6,10 @@ This project is very much a work in progress. The first iteration had basic func
 anomalies and was strewn with errors. I have made several revisions since it was first submitted and it is 
 now in a state that it worth sharing online, although it still has some obvious issues which need to be addressed.
  
-There is one daily cruise per route, and three routes (301, 302 and 303), which are Morar to Rum return, Morar to Muck return, and Morar
+There is one daily cruise per route, and three routes (322, 323 and 324), which are Morar to Rum return, Morar to Muck return, and Morar
 to Eigg return. The vessels circumnavigate the islands in question and make stops to enable passengers to explore each of the Small Isles.
 
-You can create the database in MySQL running 'CreateDatabaseRevA.sql' - this creates the database 'dwba_assessmentV5'. 
+You can create the database in MySQL by running 'CreateDatabaseRevA.sql' - this creates the database 'dwba_assessmentV5'. 
 As its a MySQL database be sure to connect to localhost port 3306, with the user as 'root' and the password as 'stcallans'.
 Alternatively you can edit the source code.
 

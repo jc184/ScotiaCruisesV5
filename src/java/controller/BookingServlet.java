@@ -212,7 +212,7 @@ public class BookingServlet extends HttpServlet {
                 int noAdults = Integer.parseInt(request.getParameter("noAdults").trim());
                 int noChildren = Integer.parseInt(request.getParameter("noChildren").trim());
                 String otherinfo = request.getParameter("otherinfo");
-                double totalCost = Double.parseDouble(request.getParameter("totalCost").trim());//NULL POINTER HERE.
+                double totalCost = Double.parseDouble(request.getParameter("totalCost").trim());
                 boolean paymentReceived = Boolean.parseBoolean(request.getParameter("paymentReceived"));
                 Date today = new Date();
                 Date nextWeek = new Date(today.getTime() + (1000 * 60 * 60 * 24 * 7));

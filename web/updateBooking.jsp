@@ -9,17 +9,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
 
-<%
-    //String customerID = request.getParameter("customerID");
-    //String firstname = request.getParameter("firstname");
-    //String surname = request.getParameter("surname");
-    //String loginPasswd = request.getParameter("loginPasswd");
 
-    //session.setAttribute("customerID", customerID);
-    //session.setAttribute("firstname", firstname);
-    //session.setAttribute("surname", surname);
-    //session.setAttribute("loginPasswd", loginPasswd);
-%>
 <html>
     <!-- ACKNOWLEDGEMENTS
     * DatePickerControl.v.1.1.7
@@ -32,7 +22,6 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Update Booking Page</title>
-        <!--  -->
         <script type="text/javascript" src="scripts/datepickercontrol.js"></script>
         <script type="text/javascript" src="scripts/bookingvalidation.js"></script>
         <link type="text/css" rel="stylesheet" href="styles/datepickercontrol.css">
@@ -95,7 +84,7 @@
                         
                         <tr>
                             <td align="left"><p>Note:</p></td>
-                            <td><p>The maximum number of Adults and Children is 30</p></td>
+                            <td><p>The maximum number of Adults and Children is 12</p></td>
                         </tr>
                         <tr>
                             <td><br /><input type="hidden" name="bookingID" value="<%= booking.getBookingID()%>" /></td>
