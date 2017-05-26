@@ -11,8 +11,7 @@ import java.util.List;
 
 /**
  *
- * <p>
- * This class is a Booking Manager for the Scotia Cruises Web Application</p>
+ * <p>This class is a Booking Manager for the Scotia Cruises Web Application</p>
  *
  * @author James Chalmers 08003323 BSc Computing
  * @version 5.0
@@ -71,7 +70,7 @@ public class BookingManager implements Serializable {
     public int getPassengerTotal(int routeID, Date sdfSailingDate) {
         List<BookingBean> rtnList = new ArrayList<>();
         int passengerTotal = 0;
-        for (BookingBean booking : bookingStore.getAllRecords()) {
+        for (BookingBean booking : bookingStore.getAllRecords()) {//***ADD 'FULLY BOOKED' CAPABILITY HERE***
             int bookingTotal = 0;
             if (booking.getRouteID() == routeID && booking.getSailingDate().equals(sdfSailingDate)) {
                 bookingTotal = booking.getNoAdults() + booking.getNoChildren();

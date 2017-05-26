@@ -178,7 +178,8 @@ public class BookingServlet extends HttpServlet {
                         request.setAttribute("arrival", arrival);
                     }
                     int passengerTotal = 0;
-                    passengerTotal = bookingManager.getPassengerTotal(routeID, sdfSailingDate);
+                    String msg;
+                    passengerTotal = bookingManager.getPassengerTotal(routeID, sdfSailingDate);//***ADD 'FULLY BOOKED' CAPABILITY HERE***
                     request.setAttribute("passengerTotal", passengerTotal);
                     if (request.getSession(false).getAttribute("loginName").equals("admin") && request.getSession(false).getAttribute("loginPasswd").equals("admin")) {
                         url = "/displaySailingStaff.jsp";
