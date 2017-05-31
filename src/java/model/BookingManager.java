@@ -70,7 +70,7 @@ public class BookingManager implements Serializable {
     public int getPassengerTotal(int routeID, Date sdfSailingDate) {
         List<BookingBean> rtnList = new ArrayList<>();
         int passengerTotal = 0;
-        for (BookingBean booking : bookingStore.getAllRecords()) {//***ADD 'FULLY BOOKED' CAPABILITY HERE***
+        for (BookingBean booking : bookingStore.getAllRecords()) {
             int bookingTotal = 0;
             if (booking.getRouteID() == routeID && booking.getSailingDate().equals(sdfSailingDate)) {
                 bookingTotal = booking.getNoAdults() + booking.getNoChildren();
@@ -79,10 +79,28 @@ public class BookingManager implements Serializable {
                     passengerTotal += bookingTotal;
                     bookingTotal = 0;
                 }
-            }
+            } 
         }
+       
         return (passengerTotal);
     }
+    
+//        public int getPassengerTotal(int routeID, Date sdfSailingDate) {
+//        List<BookingBean> rtnList = new ArrayList<>();
+//        int passengerTotal = 0;
+//        for (BookingBean booking : bookingStore.getAllRecords()) {//***ADD 'FULLY BOOKED' CAPABILITY HERE***
+//            int bookingTotal = 0;
+//            if (booking.getRouteID() == routeID && booking.getSailingDate().equals(sdfSailingDate)) {
+//                bookingTotal = booking.getNoAdults() + booking.getNoChildren();
+//                rtnList.add(booking);
+//                for (BookingBean rtnList1 : rtnList) {
+//                    passengerTotal += bookingTotal;
+//                    bookingTotal = 0;
+//                }
+//            }
+//        }
+//        return (passengerTotal);
+//    }
 
     public List<BookingBean> getSailing(int routeID, Date sdfSailingDate) {
         List<BookingBean> rtnList = new ArrayList<>();

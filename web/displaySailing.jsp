@@ -49,6 +49,7 @@
                 <br />
                 <h3>Route: <%= request.getAttribute("routeString")%> </h3>
                 <h3>Total No of passengers for this cruise: <%= request.getAttribute("passengerTotal")%> </h3>
+                <h3>Info: <%= request.getAttribute("msg")%> </h3>
                 <table cellspacing="6" border="0" id="table" class="" >
                     <!-- UNCOMMENT HTML WITH THIS 
                     <form name="goto" action="BookingServlet">

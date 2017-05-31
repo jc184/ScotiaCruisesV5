@@ -54,15 +54,19 @@ public class BookingServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, ParseException {
         String url = "/index.jsp";
+        int routeID = 0;
+        Date sdfSailingDate = null;
+        int passengerTotal = 0;
 
         String submit = request.getParameter("submit");
         if (submit != null && submit.length() > 0) {
             if (submit.equals("add booking")) {
+
                 int customerID = Integer.parseInt(request.getParameter("customerID").trim());
-                int routeID = Integer.parseInt(request.getParameter("routeID").trim());
+                routeID = Integer.parseInt(request.getParameter("routeID").trim());
                 String sailingDate = request.getParameter("sailingDate").trim();
                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-                Date sdfSailingDate = formatter.parse(sailingDate);
+                sdfSailingDate = formatter.parse(sailingDate);
                 int noAdults = Integer.parseInt(request.getParameter("noAdults").trim());
                 int noChildren = Integer.parseInt(request.getParameter("noChildren").trim());
                 String otherinfo = request.getParameter("otherinfo").trim();
@@ -71,26 +75,31 @@ public class BookingServlet extends HttpServlet {
                 Date today = new Date();
                 Date nextWeek = new Date(today.getTime() + (1000 * 60 * 60 * 24 * 7));
 
-                if (sailingDate.equals("")) {//CHECK THIS LINE. @ 06-04-2017 17.31PM
-                    url = "/scotiavalidation.jsp";
-                } else if (sdfSailingDate.before(nextWeek)) {//CHECK THIS LINE. @ 06-04-2017 17.31PM
-                    url = "/scotiadatevalidation.jsp";
-                } else {
-                    if (routeID == 322) {
-                        totalCost = (noAdults * RouteEnum.ROUTE322.getAdultFare()) + (noChildren * RouteEnum.ROUTE322.getChildFare());
-                        request.setAttribute("totalCost", totalCost);
-                    } else if (routeID == 323) {
-                        totalCost = (noAdults * RouteEnum.ROUTE323.getAdultFare()) + (noChildren * RouteEnum.ROUTE323.getChildFare());
-                        request.setAttribute("totalCost", totalCost);
-                    } else if (routeID == 324) {
-                        totalCost = (noAdults * RouteEnum.ROUTE324.getAdultFare()) + (noChildren * RouteEnum.ROUTE324.getChildFare());
-                        request.setAttribute("totalCost", totalCost);
+                passengerTotal = bookingManager.getPassengerTotal(routeID, sdfSailingDate);
+                if (passengerTotal < 12) {
+                    if (sailingDate.equals("")) {//CHECK THIS LINE. @ 06-04-2017 17.31PM
+                        url = "/scotiavalidation.jsp";
+                    } else if (sdfSailingDate.before(nextWeek)) {//CHECK THIS LINE. @ 06-04-2017 17.31PM
+                        url = "/scotiadatevalidation.jsp";
+                    } else {
+                        if (routeID == 322) {
+                            totalCost = (noAdults * RouteEnum.ROUTE322.getAdultFare()) + (noChildren * RouteEnum.ROUTE322.getChildFare());
+                            request.setAttribute("totalCost", totalCost);
+                        } else if (routeID == 323) {
+                            totalCost = (noAdults * RouteEnum.ROUTE323.getAdultFare()) + (noChildren * RouteEnum.ROUTE323.getChildFare());
+                            request.setAttribute("totalCost", totalCost);
+                        } else if (routeID == 324) {
+                            totalCost = (noAdults * RouteEnum.ROUTE324.getAdultFare()) + (noChildren * RouteEnum.ROUTE324.getChildFare());
+                            request.setAttribute("totalCost", totalCost);
+                        }
+                        bookingManager.addBooking(customerID, routeID, sdfSailingDate, noAdults, noChildren, otherinfo, totalCost, paymentReceived);
+                        int bookingID = 0;
+                        bookingID = bookingManager.getBookingIdByAdd(bookingID);
+                        request.setAttribute("bookingID", bookingID);
+                        url = "/bookingConfirmation.jsp";
                     }
-                    bookingManager.addBooking(customerID, routeID, sdfSailingDate, noAdults, noChildren, otherinfo, totalCost, paymentReceived);
-                    int bookingID = 0;
-                    bookingID = bookingManager.getBookingIdByAdd(bookingID);
-                    request.setAttribute("bookingID", bookingID);
-                    url = "/bookingConfirmation.jsp";
+                } else {
+                    url = "/fullyBookedInfo.jsp";
                 }
 
             } else if (submit.equals("book")) {
@@ -133,7 +142,7 @@ public class BookingServlet extends HttpServlet {
                 }
 
             } else if (submit.equals("show sailing")) {
-                int routeID = 0;
+                routeID = 0;
                 try {
                     routeID = Integer.parseInt(request.getParameter("routeID").trim());
                 } catch (NumberFormatException nfe) {
@@ -146,7 +155,7 @@ public class BookingServlet extends HttpServlet {
                     url = "/scotiavalidation.jsp";
                 } else {
                     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-                    Date sdfSailingDate = formatter.parse(sailingDate);
+                    sdfSailingDate = formatter.parse(sailingDate);
                     Calendar cal = Calendar.getInstance();
                     cal.setTime(sdfSailingDate);
                     cal.getTime();
@@ -177,13 +186,17 @@ public class BookingServlet extends HttpServlet {
                         request.setAttribute("departure", departure);
                         request.setAttribute("arrival", arrival);
                     }
-                    int passengerTotal = 0;
+                    passengerTotal = 0;
                     String msg;
                     passengerTotal = bookingManager.getPassengerTotal(routeID, sdfSailingDate);//***ADD 'FULLY BOOKED' CAPABILITY HERE***
+                    if (passengerTotal >= 12) {
+                        msg = "The cruise is fully booked. Please choose another date.";
+                        request.setAttribute("msg", msg);
+                    }
                     request.setAttribute("passengerTotal", passengerTotal);
                     if (request.getSession(false).getAttribute("loginName").equals("admin") && request.getSession(false).getAttribute("loginPasswd").equals("admin")) {
                         url = "/displaySailingStaff.jsp";
-                    } else { 
+                    } else {
                         url = "/displaySailing.jsp";
                     }
                 }
@@ -206,10 +219,10 @@ public class BookingServlet extends HttpServlet {
             } else if (submit.equals("update")) {
                 int bookingID = Integer.parseInt(request.getParameter("bookingID").trim());
                 int customerID = Integer.parseInt(request.getParameter("customerID").trim());
-                int routeID = Integer.parseInt(request.getParameter("routeID").trim());
+                routeID = Integer.parseInt(request.getParameter("routeID").trim());
                 String sailingDate = request.getParameter("sailingDate").trim();
                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-                Date sdfSailingDate = formatter.parse(sailingDate);
+                sdfSailingDate = formatter.parse(sailingDate);
                 int noAdults = Integer.parseInt(request.getParameter("noAdults").trim());
                 int noChildren = Integer.parseInt(request.getParameter("noChildren").trim());
                 String otherinfo = request.getParameter("otherinfo");
@@ -218,26 +231,31 @@ public class BookingServlet extends HttpServlet {
                 Date today = new Date();
                 Date nextWeek = new Date(today.getTime() + (1000 * 60 * 60 * 24 * 7));
 
-                if (sailingDate.equals("")) {//CHECK THIS LINE. @ 06-04-2017 17.31PM
-                    url = "/scotiavalidation.jsp";
-                } else if (sdfSailingDate.before(nextWeek)) {//CHECK THIS LINE. @ 06-04-2017 17.31PM
-                    url = "/scotiadatevalidation.jsp";
-                } else {
-                    if (routeID == 322) {
-                        totalCost = (noAdults * RouteEnum.ROUTE322.getAdultFare()) + (noChildren * RouteEnum.ROUTE322.getChildFare());
-                        request.setAttribute("totalCost", totalCost);
-                    } else if (routeID == 323) {
-                        totalCost = (noAdults * RouteEnum.ROUTE323.getAdultFare()) + (noChildren * RouteEnum.ROUTE323.getChildFare());
-                        request.setAttribute("totalCost", totalCost);
-                    } else if (routeID == 324) {
-                        totalCost = (noAdults * RouteEnum.ROUTE324.getAdultFare()) + (noChildren * RouteEnum.ROUTE324.getChildFare());
-                        request.setAttribute("totalCost", totalCost);
-                    }
-                    bookingManager.updateBooking(bookingID, customerID, routeID, sdfSailingDate, noAdults, noChildren, otherinfo, totalCost, paymentReceived);
-                    request.setAttribute("bookingStore", bookingManager.getAllBookings());
-                    request.setAttribute("bookingID", bookingID);
+                passengerTotal = bookingManager.getPassengerTotal(routeID, sdfSailingDate);
+                if (passengerTotal < 12) {
+                    if (sailingDate.equals("")) {//CHECK THIS LINE. @ 06-04-2017 17.31PM
+                        url = "/scotiavalidation.jsp";
+                    } else if (sdfSailingDate.before(nextWeek)) {//CHECK THIS LINE. @ 06-04-2017 17.31PM
+                        url = "/scotiadatevalidation.jsp";
+                    } else {
+                        if (routeID == 322) {
+                            totalCost = (noAdults * RouteEnum.ROUTE322.getAdultFare()) + (noChildren * RouteEnum.ROUTE322.getChildFare());
+                            request.setAttribute("totalCost", totalCost);
+                        } else if (routeID == 323) {
+                            totalCost = (noAdults * RouteEnum.ROUTE323.getAdultFare()) + (noChildren * RouteEnum.ROUTE323.getChildFare());
+                            request.setAttribute("totalCost", totalCost);
+                        } else if (routeID == 324) {
+                            totalCost = (noAdults * RouteEnum.ROUTE324.getAdultFare()) + (noChildren * RouteEnum.ROUTE324.getChildFare());
+                            request.setAttribute("totalCost", totalCost);
+                        }
+                        bookingManager.updateBooking(bookingID, customerID, routeID, sdfSailingDate, noAdults, noChildren, otherinfo, totalCost, paymentReceived);
+                        request.setAttribute("bookingStore", bookingManager.getAllBookings());
+                        request.setAttribute("bookingID", bookingID);
 
-                    url = "/bookingConfirmation.jsp";
+                        url = "/bookingConfirmation.jsp";
+                    }
+                } else {
+                    url = "/fullyBookedInfo.jsp";
                 }
 
             } else if (submit.equals("delete")) {
