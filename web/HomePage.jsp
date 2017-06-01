@@ -23,9 +23,11 @@
         of the enticing Small Isles at their leisure.<br/><br/>
         Enjoy on board facilities and dine in unforgettable surroundings in our 
         dining saloons, or weather permitting, on deck or on our viewing platforms.
-        Here you can experience Scottish Wildlife at first hand, including elusive dolphins.
+        Here you can experience Scottish Wildlife at first hand, including elusive 
+        dolphins and Basking sharks.
         Take shelter down below when it is raining and enjoy much needed refreshments 
-        from our cosy bars.
+        from our cosy bars, or try fishing for mackerel from the side of the boat you
+        have booked.
         Each vessel has a crew of four: Skipper, Bosun, Wildlife Guide and Chef, and
         has room for 12 passengers each.</p>
 </div>

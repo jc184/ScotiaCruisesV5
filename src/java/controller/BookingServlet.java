@@ -57,6 +57,7 @@ public class BookingServlet extends HttpServlet {
         int routeID = 0;
         Date sdfSailingDate = null;
         int passengerTotal = 0;
+        int bookingTotal = 0;
 
         String submit = request.getParameter("submit");
         if (submit != null && submit.length() > 0) {
@@ -76,10 +77,11 @@ public class BookingServlet extends HttpServlet {
                 Date nextWeek = new Date(today.getTime() + (1000 * 60 * 60 * 24 * 7));
 
                 passengerTotal = bookingManager.getPassengerTotal(routeID, sdfSailingDate);
-                if (passengerTotal < 12) {
-                    if (sailingDate.equals("")) {//CHECK THIS LINE. @ 06-04-2017 17.31PM
+                bookingTotal = noAdults + noChildren;
+                if (passengerTotal + bookingTotal < 12) {
+                    if (sailingDate.equals("")) {
                         url = "/scotiavalidation.jsp";
-                    } else if (sdfSailingDate.before(nextWeek)) {//CHECK THIS LINE. @ 06-04-2017 17.31PM
+                    } else if (sdfSailingDate.before(nextWeek)) {
                         url = "/scotiadatevalidation.jsp";
                     } else {
                         if (routeID == 322) {
@@ -186,9 +188,8 @@ public class BookingServlet extends HttpServlet {
                         request.setAttribute("departure", departure);
                         request.setAttribute("arrival", arrival);
                     }
-                    passengerTotal = 0;
                     String msg;
-                    passengerTotal = bookingManager.getPassengerTotal(routeID, sdfSailingDate);//***ADD 'FULLY BOOKED' CAPABILITY HERE***
+                    passengerTotal = bookingManager.getPassengerTotal(routeID, sdfSailingDate);
                     if (passengerTotal >= 12) {
                         msg = "The cruise is fully booked. Please choose another date.";
                         request.setAttribute("msg", msg);
@@ -232,10 +233,11 @@ public class BookingServlet extends HttpServlet {
                 Date nextWeek = new Date(today.getTime() + (1000 * 60 * 60 * 24 * 7));
 
                 passengerTotal = bookingManager.getPassengerTotal(routeID, sdfSailingDate);
-                if (passengerTotal < 12) {
-                    if (sailingDate.equals("")) {//CHECK THIS LINE. @ 06-04-2017 17.31PM
+                bookingTotal = noAdults + noChildren;
+                if (passengerTotal + bookingTotal < 12) {
+                    if (sailingDate.equals("")) {
                         url = "/scotiavalidation.jsp";
-                    } else if (sdfSailingDate.before(nextWeek)) {//CHECK THIS LINE. @ 06-04-2017 17.31PM
+                    } else if (sdfSailingDate.before(nextWeek)) {
                         url = "/scotiadatevalidation.jsp";
                     } else {
                         if (routeID == 322) {
