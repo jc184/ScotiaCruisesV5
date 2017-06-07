@@ -82,7 +82,6 @@ public class BookingManager implements Serializable {
                 }
             } 
         }
-       
         return (passengerTotal);
     }
     
@@ -101,9 +100,6 @@ public class BookingManager implements Serializable {
         return bookingStore.getAllRecords();
     }
 
-//    public Vector<BookingBean> getAllBookings() {
-//        return bookingStore.getAllRecords();
-//    }
     public BookingBean getBooking(int id) {
         return bookingStore.getRecord(id);
     }

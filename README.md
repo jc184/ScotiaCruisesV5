@@ -1,6 +1,6 @@
 # ScotiaCruisesV5
 This was a BSc Computing (Software Development) Third Year project for 'Designing Web-based Applications' 
-at Moray College UHI (The University of the Highlands and Islands) under Lecturer Darryl Oatridge in Elgin in 2010-11.
+at Moray College UHI (The University of the Highlands and Islands) in Elgin in 2010-11.
 It is written in Java / JSP and uses Servlets as controllers and has model and DAO classes. 
 This project is still very much a work in progress. The first iteration had good basic functionality but had several 
 anomalies and was strewn with errors. I have made several revisions since it was first submitted and it is 
