@@ -4,6 +4,7 @@
  */
 package model;
 
+import DAO.CustomerDataStore;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +58,7 @@ public class CustomerManager implements Serializable {
     public List<CustomerBean> getFilteredCustomers(String emailAddress) {
         List<CustomerBean> rtnList = new ArrayList<>();
         for (CustomerBean customer : customerStore.getAllRecords()) {
-            if (customer.getEmailAddress().equalsIgnoreCase(emailAddress)) {//ADD AN EXTRA CONDITION HERE 
+            if (customer.getEmailAddress().equalsIgnoreCase(emailAddress)) { 
                 rtnList.add(customer);
             }
         }
@@ -79,7 +80,7 @@ public class CustomerManager implements Serializable {
                 return cb;
             }
         }
-        return null;
+        return null;//???
     }
 
     public int getCustomerIdByAdd(String loginName, String loginPasswd) {

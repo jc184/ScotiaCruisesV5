@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
+package DAO;
 
 import java.io.Serializable;
 import java.sql.Connection;
@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import model.BookingBean;
 
 /**
  * <p>

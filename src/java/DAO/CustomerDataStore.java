@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package model;
+package DAO;
 
 import java.io.Serializable;
 import java.sql.Connection;
@@ -12,7 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
+import model.CustomerBean;
 
 /**
  * <p>This class is a Customer Data Store for the Scotia Cruises Web Application</p>
@@ -71,7 +71,7 @@ public class CustomerDataStore implements Serializable {
     }
 
     public CustomerBean getRecord(int id) {
-        CustomerBean productBean = null;
+        CustomerBean customerBean = null;
         Connection connection = getConnection();
         try {
             PreparedStatement get = (PreparedStatement) connection.prepareStatement("SELECT * FROM customer WHERE idCustomer=?");
@@ -81,7 +81,7 @@ public class CustomerDataStore implements Serializable {
             ResultSet results = get.executeQuery();
 
             while (results.next()) {
-                productBean = new CustomerBean(
+                customerBean = new CustomerBean(
                         results.getInt("idCustomer"),
                         results.getString("firstname"),
                         results.getString("surname"),
@@ -98,7 +98,7 @@ public class CustomerDataStore implements Serializable {
         } catch (SQLException sqle) {
             System.err.println("Unable to find Record: [" + sqle.getErrorCode() + "] " + sqle.getMessage());
         }
-        return (productBean);
+        return (customerBean);
     }
 
     public void updateRecord(CustomerBean customer) {

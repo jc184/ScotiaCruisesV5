@@ -4,6 +4,7 @@
  */
 package model;
 
+import DAO.BookingDataStore;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
