@@ -6,7 +6,6 @@ package DAO;
 
 import java.io.Serializable;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -27,7 +26,7 @@ public class BookingDataStore implements Serializable {
 
     public void createRecord(BookingBean booking) {
 
-        Connection myConnection = getConnection();
+        Connection myConnection = DBConnectionInfo.getConnection();
 
         try {
             try (PreparedStatement create = (PreparedStatement) myConnection.prepareStatement("INSERT INTO booking VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
@@ -55,30 +54,30 @@ public class BookingDataStore implements Serializable {
         }
     }
 
-    private Connection getConnection() {//IDENTICAL TO METHOD IN CUSTDATASTORE
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-
-        } catch (ClassNotFoundException cnfe) {
-            System.err.println("Database driver not found: " + cnfe.getMessage());
-        }
-
-        String dbUrl = "jdbc:mysql://localhost:3306/dwba_assessmentV5";
-        String dbUser = "root";
-        String dbPass = "stcallans";
-        Connection connection = null;
-
-        try {
-            connection = (Connection) DriverManager.getConnection(dbUrl, dbUser, dbPass);
-        } catch (SQLException sqle) {
-            System.err.println("Unable to connect to Database: [" + sqle.getErrorCode() + "]" + sqle.getMessage());
-        }
-        return (connection);
-    }
+//    private Connection getConnection() {//IDENTICAL TO METHOD IN CUSTDATASTORE
+//        try {
+//            Class.forName("com.mysql.jdbc.Driver");
+//
+//        } catch (ClassNotFoundException cnfe) {
+//            System.err.println("Database driver not found: " + cnfe.getMessage());
+//        }
+//
+//        String dbUrl = "jdbc:mysql://localhost:3306/dwba_assessmentV5";
+//        String dbUser = "root";
+//        String dbPass = "stcallans";
+//        Connection connection = null;
+//
+//        try {
+//            connection = (Connection) DriverManager.getConnection(dbUrl, dbUser, dbPass);
+//        } catch (SQLException sqle) {
+//            System.err.println("Unable to connect to Database: [" + sqle.getErrorCode() + "]" + sqle.getMessage());
+//        }
+//        return (connection);
+//    }
 
     public BookingBean getRecord(int id) {
         BookingBean bb = null;
-        Connection connection = getConnection();
+        Connection connection = DBConnectionInfo.getConnection();
         try {
             try (PreparedStatement get = (PreparedStatement) connection.prepareStatement("SELECT * FROM booking WHERE idBooking=?")) {
                 get.setInt(1, id);
@@ -109,7 +108,7 @@ public class BookingDataStore implements Serializable {
 
     public void removeRecord(int id) {
 
-        Connection connection = getConnection();
+        Connection connection = DBConnectionInfo.getConnection();
 
         try {
             try (PreparedStatement remove = connection.prepareStatement(
@@ -127,7 +126,7 @@ public class BookingDataStore implements Serializable {
     }
 
     public void updateRecord(BookingBean booking) {
-        Connection connection = getConnection();
+        Connection connection = DBConnectionInfo.getConnection();
 
         try {
             try (PreparedStatement update = (PreparedStatement) connection.prepareStatement(
@@ -166,7 +165,7 @@ public class BookingDataStore implements Serializable {
 
     public List<BookingBean> getAllRecords() {
 
-        Connection connection = getConnection();
+        Connection connection = DBConnectionInfo.getConnection();
         List<BookingBean> allBookings = new ArrayList<>();
 
         try {

@@ -16,7 +16,7 @@
     <p>Please check your username and password and try again</p><br />
     <table cellspacing="8" border="0">
         <td><p>Back to previous page</p></td>
-        <td><input type="button" value="back" onclick="location.href = document.referrer; return false;"" style="width:75px" /></td>
+        <td><input type="button" value="back" onclick="location.href = document.referrer; return false;" style="width:75px" /></td>
     </table>
 </div>
 
