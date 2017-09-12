@@ -22,8 +22,8 @@ public class DBConnectionInfo {
         } catch (ClassNotFoundException cnfe) {
             System.err.println("Database driver not found: " + cnfe.getMessage());
         }
-
-        String dbUrl = "jdbc:mysql://localhost:3306/dwba_assessmentV5";
+//        String dbUrl = "jdbc:mysql://localhost:3306/dwba_assessmentV5";
+        String dbUrl = "jdbc:mysql://lochoich.co86tkgbwzs5.eu-west-1.rds.amazonaws.com:3306/dwba_assessmentv5";
         String dbUser = "root";
         String dbPass = "stcallans";
         Connection connection = null;

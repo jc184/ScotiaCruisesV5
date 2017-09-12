@@ -9,6 +9,10 @@
 <%@page import="model.CustomerBean" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<%
+    int timeout = session.getMaxInactiveInterval();
+    response.setHeader("Refresh", timeout + "; URL = index.jsp");
+%>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
     <head>
         <title>Scotia Update Registration Page</title>

@@ -10,7 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * <p>This class is a Customer Manager for the Scotia Cruises Web Application</p>
+ * <p>
+ * This class is a Customer Manager for the Scotia Cruises Web Application</p>
  *
  * @author James Chalmers 08003323 BSc Computing
  * @version 5.0
@@ -58,7 +59,7 @@ public class CustomerManager implements Serializable {
     public List<CustomerBean> getFilteredCustomers(String emailAddress) {
         List<CustomerBean> rtnList = new ArrayList<>();
         for (CustomerBean customer : customerStore.getAllRecords()) {
-            if (customer.getEmailAddress().equalsIgnoreCase(emailAddress)) { 
+            if (customer.getEmailAddress().equalsIgnoreCase(emailAddress)) {
                 rtnList.add(customer);
             }
         }
@@ -91,6 +92,15 @@ public class CustomerManager implements Serializable {
             }
         }
         return customerID;
+    }
+
+    public boolean checkCustomerExists(String loginName, String loginPasswd, String emailAddress) {
+        for (CustomerBean cb : customerStore.getAllRecords()) {
+            if (cb.getLoginName().equals(loginName) && (cb.getLoginPasswd().equals(loginPasswd)) || (cb.getEmailAddress().equals(emailAddress))) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /*

@@ -54,6 +54,8 @@ public class CustomerServlet extends HttpServlet {
                 String regex = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
                 if (firstname.equalsIgnoreCase("") || surname.equalsIgnoreCase("") || contactNo.equalsIgnoreCase("") || emailAddress.equalsIgnoreCase("") || !emailAddress.matches(regex) || loginName.equalsIgnoreCase("") || loginPasswd.equalsIgnoreCase("")) {
                     url = "/scotiavalidation.jsp";
+                } else if (customerManager.checkCustomerExists(loginName, loginPasswd, emailAddress)) {
+                    url = "/customerExists.jsp";
                 } else {
                     customerManager.addCustomer(firstname, surname, contactNo, emailAddress, loginName, loginPasswd, countryOrig);
                     int customerID = customerManager.getCustomerIdByAdd(loginName, loginPasswd);
@@ -112,7 +114,7 @@ public class CustomerServlet extends HttpServlet {
                 String loginPasswd = request.getParameter("loginPasswd");
                 String countryOrig = request.getParameter("countryOrig");
                 String regex = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
-                if (firstname.equalsIgnoreCase("") || surname.equalsIgnoreCase("") || contactNo.equalsIgnoreCase("") || emailAddress.equalsIgnoreCase("") || !emailAddress.matches(regex)|| loginName.equalsIgnoreCase("") || loginPasswd.equalsIgnoreCase("")) {
+                if (firstname.equalsIgnoreCase("") || surname.equalsIgnoreCase("") || contactNo.equalsIgnoreCase("") || emailAddress.equalsIgnoreCase("") || !emailAddress.matches(regex) || loginName.equalsIgnoreCase("") || loginPasswd.equalsIgnoreCase("")) {
                     url = "/scotiavalidation.jsp";
                 } else {
                     customerManager.updateCustomer(customerID, firstname, surname, contactNo, emailAddress, loginName, loginPasswd, countryOrig);
@@ -126,13 +128,12 @@ public class CustomerServlet extends HttpServlet {
                 request.setAttribute("customerStore", customerManager.getAllCustomers());
                 url = "/deleteConfirmation.jsp";
 
-            } 
+            }
         }
         RequestDispatcher dispatcher
                 = getServletContext().getRequestDispatcher(url);
         dispatcher.forward(request, response);
     }
-    
 
     /**
      * Handles the HTTP <code>POST</code> method.
@@ -148,6 +149,7 @@ public class CustomerServlet extends HttpServlet {
         processRequest(request, response);//THIS WAS MISSING. PRESUMABLY SHOULD HAVE BEEN THERE. 10-04-2017
     }
 // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+
     /**
      * Handles the HTTP <code>GET</code> method.
      *

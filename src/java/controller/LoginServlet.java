@@ -73,8 +73,11 @@ public class LoginServlet extends HttpServlet {
          * basis
          */
         Connection loginConnection = null;
-        String dbUrl = "jdbc:mysql://localhost:3306/";
-        String dbName = "dwba_assessmentV5";
+        String dbUrl = "jdbc:mysql://lochoich.co86tkgbwzs5.eu-west-1.rds.amazonaws.com:3306/";
+        String dbName = "dwba_assessmentv5";
+        
+//        String dbUrl = "jdbc:mysql://localhost:3306/";
+//        String dbName = "dwba_assessmentV5";
         String driver = "com.mysql.jdbc.Driver";
         String dbUserName = "root";
         String dbPassword = "stcallans";

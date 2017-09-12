@@ -186,37 +186,6 @@ public class CustomerDataStore implements Serializable {
         return (allCustomers);
     }
     
-//    public Vector<CustomerBean> getAllRecords() {
-//
-//        Connection connection = getConnection();
-//        Vector<CustomerBean> allCustomers = new Vector<CustomerBean>();
-//
-//        try {
-//            PreparedStatement get = (PreparedStatement) connection.prepareStatement(
-//                    "SELECT * FROM customer");
-//
-//            ResultSet results = get.executeQuery();
-//            CustomerBean resultBean = null;
-//            while (results.next()) {
-//                resultBean = new CustomerBean(
-//                        results.getInt("idCustomer"),
-//                        results.getString("firstname"),
-//                        results.getString("surname"),
-//                        results.getString("contact_no"),
-//                        results.getString("emailaddress"),
-//                        results.getString("loginname"),
-//                        results.getString("loginpassword"),
-//                        results.getString("country_of_origin"));
-//
-//                allCustomers.addElement(resultBean);
-//            }
-//
-//            get.close();
-//            connection.close();
-//        } catch (SQLException sqle) {
-//            System.err.println("Unable to get all records: [" + sqle.getErrorCode() + "] " + sqle.getMessage());
-//        }
-//        return (allCustomers);
-//    }
+
 }
 

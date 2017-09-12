@@ -28,6 +28,10 @@
                   available free of charge for both personal or commercial
                   projects under the creative commons license.."
 -->
+<%
+    int timeout = session.getMaxInactiveInterval();
+    response.setHeader("Refresh", timeout + "; URL = index.jsp");
+%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

@@ -22,6 +22,11 @@
             session.setAttribute("loginName", loginName);
             session.setAttribute("loginPasswd", loginPasswd);
 %>
+
+<%
+    int timeout = session.getMaxInactiveInterval();
+    response.setHeader("Refresh", timeout + "; URL = index.jsp");
+%>
 <html>
     <!-- ACKNOWLEDGEMENTS
     * DatePickerControl.v.1.1.7
