@@ -9,10 +9,6 @@ now in a state that is worth sharing online, although it still has some obvious 
 There is one daily cruise per route, and three routes (322, 323 and 324), which are Morar to Rum return, Morar to Muck return, and Morar
 to Eigg return. The vessels circumnavigate the islands in question and make stops to enable passengers to explore each of the Small Isles.
 
-You can create the database in MySQL by running 'CreateDatabaseRevA.sql' - this creates the database 'dwba_assessmentV5'. 
-As its a MySQL database be sure to connect to localhost port 3306, with the user as 'root' and the password as 'stcallans'.
-Alternatively you can edit the source code.
-
 To login as an admin user use 'admin' as the login username, and 'admin' as the login password. You can then 
 browse the application. To use the application as a customer, first register / login with your username and password.
 
